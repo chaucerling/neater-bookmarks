@@ -172,22 +172,22 @@ function init() {
 		
 		if (rememberState) body.scrollTop = localStorage.scrollTop || 0;
 		
-		var focusID = localStorage.focusID;
-		if (typeof focusID != 'undefined' && focusID != null){
-			var focusEl = $('neat-tree-item-' + focusID);
-			if (focusEl){
-				var oriOverflow = $tree.style.overflow;
-				$tree.style.overflow = 'hidden';
-				focusEl.style.width = '100%';
-				focusEl.firstElementChild.addClass('focus');
-				setTimeout(function(){
-					$tree.style.overflow = oriOverflow;
-				}, 1);
-				setTimeout(function(){
-					localStorage.removeItem('focusID');
-				}, 4000);
-			}
-		}
+//		var focusID = localStorage.focusID;
+//		if (typeof focusID != 'undefined' && focusID != null){
+//			var focusEl = $('neat-tree-item-' + focusID);
+//			if (focusEl){
+//				var oriOverflow = $tree.style.overflow;
+//				$tree.style.overflow = 'hidden';
+//				focusEl.style.width = '100%';
+//				focusEl.firstElementChild.addClass('focus');
+//				setTimeout(function(){
+//					$tree.style.overflow = oriOverflow;
+//				}, 1);
+//				setTimeout(function(){
+//					localStorage.removeItem('focusID');
+//				}, 4000);
+//			}
+//		}
 		
 		setTimeout(adaptBookmarkTooltips, 100);
 		
@@ -204,18 +204,18 @@ function init() {
 		//console.log("[window onscroll]body scrollTop: %d", body.scrollTop);
 	}
 
-	$tree.addEventListener('focus', function(e){
-		var el = e.target;
-		var tagName = el.tagName;
-		var focusEl = $tree.querySelector('.focus');
-		if (focusEl) focusEl.removeClass('focus');
-		if (tagName == 'A' || tagName == 'SPAN'){
-			var id = el.parentNode.id.replace('neat-tree-item-', '');
-			localStorage.focusID = id;
-		} else {
-			localStorage.focusID = null;
-		}
-	}, true);
+//	$tree.addEventListener('focus', function(e){
+//		var el = e.target;
+//		var tagName = el.tagName;
+//		var focusEl = $tree.querySelector('.focus');
+//		if (focusEl) focusEl.removeClass('focus');
+//		if (tagName == 'A' || tagName == 'SPAN'){
+//			var id = el.parentNode.id.replace('neat-tree-item-', '');
+//			localStorage.focusID = id;
+//		} else {
+//			localStorage.focusID = null;
+//		}
+//	}, true);
 	var closeUnusedFolders = localStorage.closeUnusedFolders;
 	$tree.addEventListener('click', function(e){
 		if (e.button != 0) return;
@@ -256,13 +256,13 @@ function init() {
 		localStorage.opens = JSON.stringify(opens);
 	});
 	// Force middle clicks to trigger the focus event
-	$tree.addEventListener('mouseup', function(e){
-		if (e.button != 1) return;
-		var el = e.target;
-		var tagName = el.tagName;
-		if (tagName != 'A' && tagName != 'SPAN') return;
-		el.focus();
-	});
+//	$tree.addEventListener('mouseup', function(e){
+//		if (e.button != 1) return;
+//		var el = e.target;
+//		var tagName = el.tagName;
+//		if (tagName != 'A' && tagName != 'SPAN') return;
+//		el.focus();
+//	});
 	
 	// Search
 	var $results = $('results');
