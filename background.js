@@ -1,5 +1,5 @@
 var reportError = function(msg, url, line){
-	var txt = '_s=3f41da182f664057b74bd124b53958a0&_r=img'
+	var txt = '_s=0e06cd64bb2bda5a40098cb6914fed12&_r=img'
 		+ '&Msg=' + escape(msg)
 		+ '&URL=' + escape(url)
 		+ '&Line=' + line
