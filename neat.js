@@ -389,6 +389,7 @@ function init() {
 		var zoomLevel = localStorage.zoom ? localStorage.zoom.toInt()/100 : 1;
 		setTimeout(function(){
 			var neatTree = $tree.firstElementChild;
+			if (neatTree == null) { return; }
 			if (neatTree.offsetHeight == null) neatTree.offsetHeight = 0;
 			var fullHeight = (neatTree.offsetHeight + $tree.offsetTop + 16)*zoomLevel;
 			// Slide up faster than down
