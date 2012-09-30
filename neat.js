@@ -170,7 +170,7 @@ function init() {
 		var html = generateHTML(tree[0].children);
 		$tree.innerHTML = html;
 		
-		if (rememberState) $tree.scrollTop = localStorage.scrollTop || 0;
+		if (rememberState) body.scrollTop = localStorage.scrollTop || 0;
 		
 		var focusID = localStorage.focusID;
 		if (typeof focusID != 'undefined' && focusID != null){
@@ -195,9 +195,15 @@ function init() {
 	});
 	
 	// Events for the tree
-	$tree.addEventListener('mousewheel', function(){
-		localStorage.scrollTop = $tree.scrollTop; // store "depth" of scroll (from top of popup) at each scroll event
+	body.addEventListener('mousewheel', function(){
+		localStorage.scrollTop = body.scrollTop;
+		//console.log("[body mousewheel]body scrollTop: %d", body.scrollTop);
 	});
+	window.onscroll = function() {
+		localStorage.scrollTop = body.scrollTop;
+		//console.log("[window onscroll]body scrollTop: %d", body.scrollTop);
+	}
+
 	$tree.addEventListener('focus', function(e){
 		var el = e.target;
 		var tagName = el.tagName;
